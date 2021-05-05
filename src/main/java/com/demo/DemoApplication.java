@@ -19,9 +19,9 @@ public class DemoApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		try (PythonInterpreter pyInterp = new PythonInterpreter()) {
-			File initialFile = new File("src/main/resources/test.py");
+//			File initialFile = new File("src/main/resources/test.py");
 			//via file .py
-			pyInterp.execfile(new FileInputStream(initialFile));
+//			pyInterp.execfile(new FileInputStream(initialFile));
 			//via code
 			pyInterp.exec("print('Hello Python World!')");
 

@@ -1,8 +1,6 @@
 package com.demo.rest;
 
 import org.python.util.PythonInterpreter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,11 +15,11 @@ public class TestResource {
 
 
     @GetMapping("/test")
-    public Boolean test() {
+    public Boolean test() throws FileNotFoundException {
         try (PythonInterpreter pyInterp = new PythonInterpreter()) {
-//            File initialFile = new File("src/main/resources/test.py");
+            File initialFile = new File("src/main/resources/test.py");
             //via file .py
-//            pyInterp.execfile(new FileInputStream(initialFile));
+            pyInterp.execfile(new FileInputStream(initialFile));
 
             //via code
             pyInterp.exec("print('Hello Python World!')");
@@ -31,4 +29,4 @@ public class TestResource {
 
 
     }
-    }
+}
