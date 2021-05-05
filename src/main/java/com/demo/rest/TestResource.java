@@ -1,6 +1,6 @@
 package com.demo.rest;
 
-import org.python.util.PythonInterpreter;
+import com.demo.service.TestService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,17 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class TestResource {
-    private final PythonInterpreter pythonInterpreter;
+    private final TestService testService;
 
-    public TestResource(PythonInterpreter pythonInterpreter) {
-        this.pythonInterpreter = pythonInterpreter;
+    public TestResource(TestService testService) {
+        this.testService = testService;
     }
 
 
     @GetMapping("/test")
     public Boolean test() {
-        pythonInterpreter.exec("print('Hello Python World!')");
-        return true;
-
+        return testService.test();
     }
 }
