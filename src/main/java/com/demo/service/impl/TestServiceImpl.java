@@ -2,6 +2,7 @@ package com.demo.service.impl;
 
 import com.demo.service.TestService;
 import org.python.util.PythonInterpreter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -9,15 +10,13 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TestServiceImpl implements TestService {
-    private final PythonInterpreter pythonInterpreter;
 
-    public TestServiceImpl(PythonInterpreter pythonInterpreter) {
-        this.pythonInterpreter = pythonInterpreter;
-    }
 
     @Override
     public Boolean test() {
-        pythonInterpreter.exec("print('Hello Python World!')");
+        try (PythonInterpreter pyInterp = new PythonInterpreter()){
+            pyInterp.exec("print('Hello Python World!')");
+        }
         return true;
     }
 }

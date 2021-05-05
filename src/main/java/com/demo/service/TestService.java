@@ -5,5 +5,5 @@ package com.demo.service;
  */
 public interface TestService {
 
-    public Boolean test();
+     Boolean test();
 }
